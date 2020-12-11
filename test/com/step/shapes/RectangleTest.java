@@ -1,31 +1,32 @@
 package com.step.shapes;
 
-import com.sun.tools.corba.se.idl.InvalidArgument;
+import com.step.exception.InvalidDimensionException;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 public class RectangleTest {
     
     @Test
     public void shouldThrowExceptionWhenLengthIsNegative() {
-        assertThrows(InvalidArgument.class, () -> Rectangle.create(-2, -3));
+        assertThrows(InvalidDimensionException.class, () -> Rectangle.create(-2, -3));
     }
     
     @Test
-    public void shouldGetAreaOfGivenRectangle() throws InvalidArgument {
+    public void shouldGetAreaOfGivenRectangle() throws InvalidDimensionException {
         Rectangle rectangle = Rectangle.create(2, 3);
         assertEquals(6, rectangle.calculateArea(), 0);
     }
     
     @Test
-    public void shouldGetAreaOfRectangleHavingDecimalDimension()throws InvalidArgument  {
+    public void shouldGetAreaOfRectangleHavingDecimalDimension() throws InvalidDimensionException {
         Rectangle rectangle = Rectangle.create(2, 3.2);
         assertEquals(6.4, rectangle.calculateArea(), 0);
     }
     
     @Test
-    public void shouldGetPerimeterOfGivenRectangle() throws InvalidArgument {
+    public void shouldGetPerimeterOfGivenRectangle() throws InvalidDimensionException {
         Rectangle rectangle = Rectangle.create(2, 3);
         assertEquals(10, rectangle.calculatePerimeter(), 0);
     }

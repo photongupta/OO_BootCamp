@@ -1,6 +1,6 @@
 package com.step.shapes;
 
-import com.sun.tools.corba.se.idl.InvalidArgument;
+import com.step.exception.InvalidDimensionException;
 
 public class Rectangle {
     private final double length;
@@ -11,9 +11,9 @@ public class Rectangle {
         this.breadth = breadth;
     }
     
-    public static Rectangle create(double length, double breadth) throws InvalidArgument {
+    public static Rectangle create(double length, double breadth) throws InvalidDimensionException {
         if (length <= 0 || breadth <= 0) {
-            throw new InvalidArgument();
+            throw new InvalidDimensionException();
         }
         return new Rectangle(length, breadth);
     }
